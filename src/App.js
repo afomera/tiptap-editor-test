@@ -39,7 +39,7 @@ const App = () => {
   return (
     <div className="App">
       <h1>TipTap Editor</h1>
-
+      <p>Try it out! If you manually add `dark` to the HTML tag's class attributes you'll see it styled for dark mode (mostly).</p>
       <TextEditor content={content} />
     </div>
   );
