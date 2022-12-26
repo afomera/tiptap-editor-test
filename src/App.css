@@ -1,5 +1,214 @@
+.App {
+  width: 80%;
+  margin: 0 auto;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+button {
+  background-color: inherit;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+:root {
+  /* General colors */
+  --editor-text-color: #374151;
+  --editor-border-color: #e2e8f0;
+  --editor-placeholder-text-color: #a0aec0;
+  --editor-content-background-color: #ffffff;
+
+  /* General buttons */
+  --editor-button-text-color: #7b7b7b;
+  --editor-button-active-color: #000;
+  --editor-button-disabled-color: #e2e8f0;
+  --editor-button-active-background-color: #e2e8f0;
+
+  /* MenuBar */
+  --editor-menu-bar-background-color: #ffffff;
+  --editor-menu-bar-border-color: var(--editor-border-color);
+  --editor-menu-bar-seperator-background-color: #e2e8f0;
+  --editor-menu-bar-button-background-color: #ffffff;
+  --editor-menu-bar-button-text-color: var(--editor-button-text-color);
+  --editor-menu-bar-button-active-text-color: var(--editor-button-active-color);
+  --editor-menu-bar-button-disabled-text-color: var(--editor-button-disabled-color);
+  --editor-menu-bar-button-active-background-color: #ffffff;
+  --editor-menu-bar-top-radius: 0rem;
+
+  /* BubbleMenu */
+  --editor-bubble-menu-background-color: #ffffff;
+  --editor-bubble-menu-border-color: var(--editor-border-color);
+  --editor-bubble-menu-button-text-color: var(--editor-button-text-color);
+  --editor-bubble-menu-button-active-text-color: var(--editor-button-active-color);
+  --editor-bubble-menu-button-disabled-text-color: var(--editor-button-disabled-color);
+  --editor-bubble-menu-button-active-background-color: var(--editor-button-active-background-color);
+}
+
+html.dark {
+  /* General colors */
+  --editor-text-color: #dee6f2;
+  --editor-border-color: #2d3748;
+  --editor-placeholder-text-color: #a0aec0;
+  --editor-content-background-color: #1a202c;
+
+  /* General buttons */
+  --editor-button-text-color: #7b7b7b;
+  --editor-button-active-color: #1a202c;
+  --editor-button-disabled-color: #2d3748;
+  --editor-button-active-background-color: #2d3748;
+
+  /* MenuBar */
+  --editor-menu-bar-background-color: #1a202c;
+  --editor-menu-bar-border-color: var(--editor-border-color);
+  --editor-menu-bar-seperator-background-color: #2d3748;
+  --editor-menu-bar-button-background-color: #1a202c;
+  --editor-menu-bar-button-text-color: var(--editor-button-text-color);
+  --editor-menu-bar-button-active-text-color: var(--editor-button-active-color);
+  --editor-menu-bar-button-disabled-text-color: var(--editor-button-disabled-color);
+  --editor-menu-bar-button-active-background-color: #1a202c;
+  --editor-menu-bar-top-radius: 0rem;
+
+  /* BubbleMenu */
+  --editor-bubble-menu-background-color: #1a202c;
+  --editor-bubble-menu-border-color: var(--editor-border-color);
+  --editor-bubble-menu-button-text-color: var(--editor-button-text-color);
+  --editor-bubble-menu-button-active-text-color: var(--editor-button-active-color);
+  --editor-bubble-menu-button-disabled-text-color: var(--editor-button-disabled-color);
+  --editor-bubble-menu-button-active-background-color: var(--editor-button-active-background-color);
+}
+
+.editor {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--editor-text-color);
+}
+
+/* .editor .has-focus {
+  border-radius: 3px;
+  box-shadow: 0 0 0 3px #68cef8;
+} */
+
+.editor ul {
+  list-style-type: disc;
+  padding-left: 2.5rem;
+  margin-left: 1rem;
+}
+
+.editor ol {
+  list-style-type: decimal;
+  padding-left: 2.5rem;
+  margin-left: 1rem;
+}
+
+.editor--bubble-menu {
+  background-color: var(--editor-bubble-menu-background-color);
+  border: 1px solid var(--editor-bubble-menu-border-color);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.editor--bubble-menu button {
+  color: var(--editor-bubble-menu-button-text-color);
+  background-color: var(--editor-menu-bar-button-background-color);
+  padding: 0.3rem;
+  margin: 0.2rem;
+
+  &:hover {
+    color: var(--editor-bubble-menu-button-active-text-color);
+    background-color: var(--editor-bubble-menu-button-active-background-color);
+  }
+
+  &:active {
+    color: var(--editor-bubble-menu-button-active-text-color);
+    background-color: var(--editor-bubble-menu-button-active-background-color);
+  }
+
+  &:disabled {
+    color: var(--editor-bubble-menu-button-disabled-text-color);
+  }
+}
+
+.editor--bubble-menu button.is-active {
+  color: var(--editor-bubble-menu-button-active-text-color);
+  background-color: var(--editor-bubble-menu-button-active-background-color);
+}
+
+.editor--menu-bar {
+  background-color: var(--editor-menu-bar-background-color);
+  border-color: var(--editor-menu-bar-border-color);
+  border-width: 1px;
+  border-top-left-radius: var(--editor-menu-bar-top-radius);
+  border-top-right-radius: var(--editor-menu-bar-top-radius);
+  border-left: 1px solid var(--editor-menu-bar-border-color);
+  border-right: 1px solid var(--editor-menu-bar-border-color);
+  border-top: 1px solid var(--editor-menu-bar-border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.editor--menu-bar-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.editor--menu-bar-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.editor--menu-bar .editor--menu-bar-seperator {
+  background-color: var(--editor-menu-bar-seperator-background-color);
+  height: 1.25rem;
+  width: 1px;
+  margin: 0 0.5rem;
+}
+
+.editor--menu-bar button {
+  color: var(--editor-menu-bar-button-text-color);
+  background-color: var(--editor-menu-bar-button-background-color);
+  padding: 0.5rem;
+
+  &:hover {
+    color: var(--editor-menu-bar-button-active-color);
+    background-color: var(--editor-menu-bar-button-active-background-color);
+  }
+
+  &:active {
+    color: var(--editor-menu-bar-button-active-color);
+    background-color: var(--editor-button-active-background-color);
+  }
+
+  &:disabled {
+    color: var(--editor-menu-bar-button-disabled-text-color);
+  }
+}
+
+.editor--menu-bar button.is-active {
+  color: var(--editor-menu-bar-background-text-color);
+  background-color: var(--editor-menu-bar-button-active-background-color);
+}
+
+.editor--content {
+  background-color: var(--editor-content-background-color);
+  border: 1px solid var(--editor-border-color);
+  padding: 0.5rem;
+}
+
 /* Basic editor styles */
-.ProseMirror > * + * {
+.ProseMirror>*+* {
   margin-top: 0.75em;
 }
 
@@ -17,6 +226,18 @@
   line-height: 1.1;
 }
 
+.ProseMirror h1 {
+  font-size: 1.65em;
+}
+
+.ProseMirror h2 {
+  font-size: 1.5em;
+}
+
+.ProseMirror h3 {
+  font-size: 1.25em;
+}
+
 .ProseMirror code {
   background-color: rgba(97, 97, 97, 0.1);
   color: #616161;
@@ -25,7 +246,7 @@
 .ProseMirror pre {
   background: #0d0d0d;
   color: #fff;
-  font-family: "JetBrainsMono", monospace;
+  font-family: 'JetBrainsMono', monospace;
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
 }
@@ -51,4 +272,12 @@
   border: none;
   border-top: 2px solid rgba(13, 13, 13, 0.1);
   margin: 2rem 0;
+}
+
+.ProseMirror p.is-empty::before {
+  color: var(--editor-placeholder-text-color);
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
 }
