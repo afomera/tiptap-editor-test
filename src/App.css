@@ -26,6 +26,7 @@ button {
   --editor-border-color: #e2e8f0;
   --editor-placeholder-text-color: #a0aec0;
   --editor-content-background-color: #ffffff;
+  --editor-content-focus-color: #68cef8;
 
   /* General buttons */
   --editor-button-text-color: #7b7b7b;
@@ -96,6 +97,16 @@ html.dark {
   border-radius: 3px;
   box-shadow: 0 0 0 3px #68cef8;
 } */
+
+.editor [contenteditable="true"] {
+  padding: 0.5rem;
+  border: 1px solid var(--editor-border-color);
+  outline: none;
+
+  &:focus {
+    border: 2px solid var(--editor-content-focus-color);
+  }
+}
 
 .editor ul {
   list-style-type: disc;
@@ -203,8 +214,8 @@ html.dark {
 
 .editor--content {
   background-color: var(--editor-content-background-color);
-  border: 1px solid var(--editor-border-color);
-  padding: 0.5rem;
+  /* border: 1px solid var(--editor-border-color); */
+  /* padding: 0.5rem; */
 }
 
 /* Basic editor styles */
