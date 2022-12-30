@@ -1,7 +1,7 @@
 import React from "react";
 import { BubbleMenu } from '@tiptap/react'
 
-import { IconBold, IconItalic, IconStrikethrough, IconAlignLeft, IconAlignCenter, IconAlignRight } from '@tabler/icons';
+import { IconBold, IconItalic, IconStrikethrough, IconAlignLeft, IconAlignCenter, IconAlignRight, IconHighlight, IconHighlightOff } from '@tabler/icons';
 
 const BubbleMenuButton = ({ command, active, icon }) => {
   const handleClick = (event) => {
@@ -19,7 +19,28 @@ const BubbleMenuButton = ({ command, active, icon }) => {
   )
 }
 
-const EditorBubbleMenu = ({ editor }) => {
+const HighlighterMenu = ({ editor }) => {
+  if (!editor) return null
+
+  return (
+    <div>
+      {editor.isActive('highlight') &&
+        <BubbleMenuButton
+          command={() => editor.chain().focus().unsetHighlight().run()}
+          active={false} /* always false */
+          icon={<IconHighlightOff />}
+        />}
+
+      <BubbleMenuButton
+        command={() => editor.chain().focus().toggleHighlight({ color: '#FEB7B3' }).run()}
+        active={editor.isActive('highlight', { color: '#FEB7B3' })}
+        icon={<IconHighlight color={"#FEB7B3"} />}
+      />
+    </div>
+  )
+}
+
+const EditorBubbleMenu = ({ editor, bubbleMenuOptions }) => {
   if (!editor) return null
 
   return (
@@ -64,6 +85,11 @@ const EditorBubbleMenu = ({ editor }) => {
           active={editor.isActive({ textAlign: "right" })}
           icon={<IconAlignRight />}
         />
+
+        {bubbleMenuOptions.highlight ? (
+          <HighlighterMenu editor={editor} />
+        ) : null}
+
       </div>
     </BubbleMenu>
   )

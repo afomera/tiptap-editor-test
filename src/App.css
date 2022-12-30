@@ -19,14 +19,34 @@ button {
   color: inherit;
   cursor: pointer;
 }
-
 :root {
+  /* Callouts */
+  --callout-gray-background-color: #F2F3F7;
+  --callout-gray-border-color: #D0D5DD;
+  --callout-gray-text-color: #344054;
+
+  --callout-blue-background-color: #D1E9FF;
+  --callout-blue-border-color: #84CAFF;
+  --callout-blue-text-color: #2b6fe6;
+
+  --callout-green-background-color: #D1F2D7;
+  --callout-green-border-color: #84E1A9;
+  --callout-green-text-color: #0F8B3D;
+
+  --callout-yellow-background-color: #FFF9D1;
+  --callout-yellow-border-color: #FFE084;
+  --callout-yellow-text-color: #a38310;
+
+  --callout-red-background-color: #fedada;
+  --callout-red-border-color: #ff8484;
+  --callout-red-text-color: #B30000;
+
   /* General colors */
   --editor-text-color: #374151;
   --editor-border-color: #e2e8f0;
   --editor-placeholder-text-color: #a0aec0;
   --editor-content-background-color: #ffffff;
-  --editor-content-focus-color: #68cef8;
+  --editor-content-focus-color: #ec4899;
 
   /* General buttons */
   --editor-button-text-color: #7b7b7b;
@@ -60,6 +80,7 @@ html.dark {
   --editor-border-color: #2d3748;
   --editor-placeholder-text-color: #a0aec0;
   --editor-content-background-color: #1a202c;
+  --editor-content-focus-color: #ec4899;
 
   /* General buttons */
   --editor-button-text-color: #7b7b7b;
@@ -87,6 +108,105 @@ html.dark {
   --editor-bubble-menu-button-active-background-color: var(--editor-button-active-background-color);
 }
 
+.editor--command-menu-dropdown {
+  background-color: var(--editor-bubble-menu-background-color);
+  border: 1px solid var(--editor-border-color);
+  padding: 0.3rem;
+  border-radius: 0.5rem;
+}
+
+.editor--command-menu-dropdown .editor--command-menu-dropdown-group {
+  margin-bottom: 0.5rem;
+  display: block;
+  width: 100%;
+}
+
+.editor--command-menu-dropdown .editor--command-menu-dropdown-group:last-child {
+  margin-bottom: 0;
+}
+
+.editor--command-menu-dropdown .editor--command-menu-item {
+  display: flex;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  color: var(--editor-text-color);
+  text-decoration: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.editor--command-menu-dropdown .editor--command-menu-item:hover {
+  background: var(--editor-content-background-color);
+}
+
+.editor--command-menu-item.is-active {
+  color: var(--editor-bubble-menu-button-active-text-color);
+  background-color: var(--editor-bubble-menu-button-active-background-color);
+}
+
+html.dark hr {
+  border-color: #dee6f2 !important;
+}
+
+.callout {
+  border-radius: 0.5rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-width: 1px;
+}
+
+.callout p {
+  color: inherit !important;
+}
+
+.callout strong {
+  color: inherit !important;
+}
+
+.callout[data-color='gray'] {
+  background-color: var(--callout-gray-background-color);
+  border-color: var(--callout-gray-border-color);
+  color: var(--callout-gray-text-color) !important;
+}
+
+.callout[data-color='blue'] {
+  background-color: var(--callout-blue-background-color);
+  border-color: var(--callout-blue-border-color);
+  color: var(--callout-blue-text-color) !important;
+}
+
+.callout[data-color='green'] {
+  background-color: var(--callout-green-background-color);
+  border-color: var(--callout-green-border-color);
+  color: var(--callout-green-text-color) !important;
+}
+
+.callout[data-color='yellow'] {
+  background-color: var(--callout-yellow-background-color);
+  border-color: var(--callout-yellow-border-color);
+  color: var(--callout-yellow-text-color) !important;
+}
+
+.callout[data-color='red'] {
+  background-color: var(--callout-red-background-color);
+  border-color: var(--callout-red-border-color);
+  color: var(--callout-red-text-color) !important;
+}
+
+.callout p:first-child {
+  margin-top: 0;
+  margin-bottom: 0.2rem;
+}
+
+.callout p:last-child {
+  margin-top: 0.2rem;
+  margin-bottom: 0;
+}
+
 .editor {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -102,6 +222,8 @@ html.dark {
   padding: 0.5rem;
   border: 1px solid var(--editor-border-color);
   outline: none;
+  overflow-y: scroll;
+  max-height: 700px;
 
   &:focus {
     border: 2px solid var(--editor-content-focus-color);
